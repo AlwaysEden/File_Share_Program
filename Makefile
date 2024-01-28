@@ -5,14 +5,14 @@ TARGETS = server client
 
 all: $(TARGETS)
 
-server: server.c
-	$(CC) $(CFLAGS) -o server server.c -pthread
+server: dirup_server.c
+	$(CC) $(CFLAGS) -o $@ $^ -pthread
 
-client: client.c
-	$(CC) $(CFLAGS) -o client client.c -pthread
+client: dirup_client.c
+	$(CC) $(CFLAGS) -o $@ &^ -pthread
 debug:
-	$(CC) $(CFLAGS) -o dserver server.c -pthread -DDEBUG
-	$(CC) $(CFLAGS) -o dclient client.c -pthread -DDEBUG
+	$(CC) $(CFLAGS) -o dserver dirup_server.c -pthread -DDEBUG
+	$(CC) $(CFLAGS) -o dclient dirup_client.c -pthread -DDEBUG
 
 clean:
-	rm -f $(TARGETS)
+	rm $(TARGETS)
